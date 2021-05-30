@@ -3,17 +3,14 @@ package demo;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
 public class ProductRepository {
 
-    private final List<Product> productList;
-
-    public ProductRepository(List<Product> productList) {
-        this.productList = productList;
-    }
+    private final List<Product> productList = new ArrayList<>();
 
     @PostConstruct
     private void addProducts() {

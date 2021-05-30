@@ -4,6 +4,7 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -11,11 +12,10 @@ import java.util.List;
 public class Cart {
 
     private final ProductRepository productRepository;
-    private final List<Product> cartList;
+    private final List<Product> cartList = new ArrayList<>();
 
-    public Cart(ProductRepository productRepository, List<Product> cartList) {
+    public Cart(ProductRepository productRepository) {
         this.productRepository = productRepository;
-        this.cartList = cartList;
     }
 
     public void showCart() {
@@ -38,5 +38,9 @@ public class Cart {
                 break;
             }
         }
+    }
+
+    public void emptyCart() {
+        cartList.clear();
     }
 }
